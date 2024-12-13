@@ -14,7 +14,7 @@ module Api
 
         	def create
                 category = Category.new(category_params)
-                if category.save
+                if CategoryService.save(category)
                     render json: category, status:created
                 else
                     render json: {errors: category.errors.full_message}, status: :unprocessable_entity
@@ -22,15 +22,11 @@ module Api
 	        end
 
         	def update
-                if @category.update(category_params_
-                render json: @category, status: :ok
-                else
-                    render json: {errors: category.errors.full_message}, status: :unprocessable_entity
-                end
+                CategoryService.update(category,category_params) ? true : false
             end
 
         	def destroy
-                @category.destroy
+                CategoryService.destroy(category)
                 head :no_content
             end
 

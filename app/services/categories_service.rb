@@ -1,4 +1,4 @@
-class CategoryService
+class CategoriesService
   class << self
 
     def save (category)

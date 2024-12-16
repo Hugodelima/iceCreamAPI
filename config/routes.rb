@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :addresses
       resources :users
       resources :sales
+      resources :products
     end 
   end
 end

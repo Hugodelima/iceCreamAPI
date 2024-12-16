@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :users
       resources :sales
       resources :products
+      resources :user_rate_products
     end 
   end
 end

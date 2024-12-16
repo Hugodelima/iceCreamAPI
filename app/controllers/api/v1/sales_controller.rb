@@ -13,12 +13,12 @@ module Api
             end
     
             def create
-            sale = Sale.new(sale_params)
-            if SalesService.save(sale)
-                render json: sale, status: :created
-            else
-                render json: { errors: sale.errors.full_messages }, status: :unprocessable_entity
-            end
+                sale = Sale.new(sale_params)
+                if SalesService.save(sale)
+                    render json: sale, status: :created
+                else
+                    render json: { errors: sale.errors.full_messages }, status: :unprocessable_entity
+                end
             end
 
             def update

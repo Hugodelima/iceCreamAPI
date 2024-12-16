@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_15_233826) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_16_002533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_15_233826) do
     t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
+  create_table "user_rate_products", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "rate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_user_rate_products_on_product_id"
+    t.index ["rate_id"], name: "index_user_rate_products_on_rate_id"
+    t.index ["user_id"], name: "index_user_rate_products_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "gender"
@@ -74,5 +85,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_15_233826) do
 
   add_foreign_key "products", "categories"
   add_foreign_key "sales", "users"
+  add_foreign_key "user_rate_products", "products"
+  add_foreign_key "user_rate_products", "rates"
+  add_foreign_key "user_rate_products", "users"
   add_foreign_key "users", "addresses"
 end

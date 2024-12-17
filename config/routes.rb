@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       resources :sales
       resources :products
       resources :user_rate_products
+      resources :sale_products
     end 
   end
 end
+

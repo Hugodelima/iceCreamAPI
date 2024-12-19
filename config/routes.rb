@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       resources :addresses
       resources :users
       resources :sales
-      resources :products
+      resources :products do
+        collection do
+          get 'filter_by_category/:category_id', to: 'products#filter_by_category'
+        end
+      end
       resources :user_rate_products
       resources :sale_products
     end 

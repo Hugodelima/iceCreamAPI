@@ -11,6 +11,18 @@ module Api
         def show
           render json: @product, status: :ok
         end
+        
+        def filter_by_category
+          category_id = params[:category_id]
+          products = ProductsFilter.filter_by_category(Product.all, category_id)
+        
+          if products.exists?
+            render json: products, status: :ok
+          else
+            render json: { error: 'No products found for this category' }, status: :not_found
+          end
+        end
+        
   
         def create
           product = Product.new(product_params)
@@ -45,7 +57,7 @@ module Api
         end
   
         def product_params
-          params.require(:product).permit(:title, :description, :brand, :value, :size, :quantity, :category_id)
+          params.require(:product).permit(:title, :description, :brand, :value, :size, :quantity, :category_id, :image_url)
         end
       end
     end

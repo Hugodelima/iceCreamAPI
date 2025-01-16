@@ -4,6 +4,6 @@ development:
   pool: 5 # Definida por padrão
   database: ice_cream_database
   username: postgres
-  password: postgres
-  host: icecreamapi_postgres_1
+  password: 1234
+  host: icecreamapi-postgres-1
   port: 5432

@@ -4,10 +4,8 @@ services:
     command: >
       sh -c "apk add --update --no-cache libpq-dev build-base ruby-dev sqlite-dev git vips sqlite-libs tzdata curl sqlite nano &&
               gem install bundler rails &&
-              find /home -type f -exec dos2unix {} \; &&  # Corrige os finais de linha
               echo 'Gem installation completed successfully!' &&
-              tail -f /dev/null"
-
+              tail -f /dev/null"  # Mantém o container em execução
     stdin_open: true  # Permite acesso ao terminal
     tty: true 
     working_dir: /home  # Define a pasta de trabalho padrão como /home        # Habilita terminal interativo

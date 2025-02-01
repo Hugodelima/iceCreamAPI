@@ -1,4 +1,8 @@
 class Rate < ApplicationRecord
-    has_many :user_rate_products
-    has_many :sale_products
-end
+    belongs_to :user
+    belongs_to :product
+  
+    validates :star, presence: true, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 5 }
+    validates :comment, presence: true
+  end
+  
